@@ -1,0 +1,7 @@
+{
+  "name": "Neural OS",
+  "description": "A high-performance human optimization engine. Features analytical system diagnostics, autonomous strategy synthesis, and neural-inspired architectural mapping.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

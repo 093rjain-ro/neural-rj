@@ -1,0 +1,13 @@
+
+{
+  "appId": "com.neuralos.app",
+  "appName": "Neural OS",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "always"
+  }
+}
