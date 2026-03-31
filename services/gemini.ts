@@ -1,7 +1,7 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { IngestedItem, IndustryMode, AgentPlan, ImageSize } from "../types";
 
-export const createAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
+export const createAI = () => new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
 const getAI = createAI;
 
 const NEURAL_INSTRUCTION = `You are the Neural OS Architect Engine.
@@ -193,5 +193,5 @@ export const simulateVideo = async (prompt: string): Promise<string> => {
   }
   const downloadLink = operation.response?.generatedVideos?.[0]?.video?.uri;
   if (!downloadLink) throw new Error("Simulation Transmission Failed.");
-  return `${downloadLink}&key=${process.env.API_KEY}`;
+  return `${downloadLink}&key=${import.meta.env.VITE_API_KEY}`;
 };

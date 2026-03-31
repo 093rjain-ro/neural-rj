@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { AppSection, IndustryMode, UserTier } from '../types';
 
@@ -60,20 +59,28 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, active
       </div>
       
       <div className="flex items-center gap-6">
-        <nav className="flex gap-2">
-          {Object.values(AppSection).map((section) => (
-            <button
-              key={section}
-              onClick={() => setActiveSection(section)}
-              className={`px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.3em] transition-all border ${
-                activeSection === section
-                  ? 'bg-white text-black border-white'
-                  : 'bg-transparent border-white/10 text-slate-400 hover:border-white/30 hover:text-white'
-              }`}
-            >
-              {section.replace('_', ' ')}
-            </button>
-          ))}
+        <nav className="flex gap-2 flex-wrap">
+          {Object.values(AppSection).map((section) => {
+            const isAlloyDB = section === AppSection.ALLOYDB;
+            const isActive = activeSection === section;
+            return (
+              <button
+                key={section}
+                onClick={() => setActiveSection(section)}
+                className={`px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.3em] transition-all border ${
+                  isAlloyDB && isActive
+                    ? 'bg-cyan-400 text-black border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.5)]'
+                    : isAlloyDB
+                    ? 'bg-transparent border-cyan-500/40 text-cyan-400 hover:border-cyan-500 hover:shadow-[0_0_12px_rgba(6,182,212,0.2)]'
+                    : isActive
+                    ? 'bg-white text-black border-white'
+                    : 'bg-transparent border-white/10 text-slate-400 hover:border-white/30 hover:text-white'
+                }`}
+              >
+                {isAlloyDB ? '⬡ ALLOYDB' : section.replace('_', ' ')}
+              </button>
+            );
+          })}
         </nav>
 
         <div className="h-10 w-px bg-white/5 hidden lg:block"></div>

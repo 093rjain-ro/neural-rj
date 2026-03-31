@@ -1,4 +1,3 @@
-
 export enum IndustryMode {
   ACADEMIC = 'STUDENT',
   ECOMMERCE = 'BUSINESS',
@@ -12,7 +11,9 @@ export enum AppSection {
   VAULT = 'VAULT',
   VISUALIZER = 'VISUALIZER',
   BILLING = 'SUBSCRIPTION',
-  PROPAGATION = 'DEPLOYMENT'
+  PROPAGATION = 'DEPLOYMENT',
+  DATAVAULT = 'DATAVAULT',
+  ALLOYDB = 'ALLOYDB'
 }
 
 export type UserTier = 'BASIC' | 'PRO' | 'QUANTUM';

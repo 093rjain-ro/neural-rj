@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
@@ -8,6 +7,7 @@ import Visualizer from './components/Visualizer';
 import VoiceDiagnostic from './components/VoiceDiagnostic';
 import Subscription from './components/Subscription';
 import Propagation from './components/Propagation';
+import AlloyDB from './components/AlloyDB';
 import { AppSection, IngestedItem, IndustryMode, UserTier } from './types';
 
 const App: React.FC = () => {
@@ -67,6 +67,8 @@ const App: React.FC = () => {
         return <Subscription currentTier={userTier} onUpgrade={handleUpgrade} />;
       case AppSection.PROPAGATION:
         return <Propagation userTier={userTier} items={items} />;
+      case AppSection.ALLOYDB:
+        return <AlloyDB userTier={userTier} />;
       default:
         return <Dashboard items={items} activeMode={activeMode} userTier={userTier} />;
     }
@@ -107,6 +109,7 @@ const App: React.FC = () => {
         <div className="flex justify-center gap-8 mb-4 text-[8px] font-bold text-slate-600 uppercase tracking-widest">
           <button onClick={() => setActiveSection(AppSection.BILLING)} className="hover:text-white transition-colors">Subscription</button>
           <button onClick={() => setActiveSection(AppSection.PROPAGATION)} className="hover:text-white transition-colors">Propagation</button>
+          <button onClick={() => setActiveSection(AppSection.ALLOYDB)} className="hover:text-cyan-400 transition-colors text-cyan-900">AlloyDB AI</button>
           <a href="#" className="hover:text-white transition-colors">Privacy</a>
           <a href="#" className="hover:text-white transition-colors">Terms</a>
         </div>
