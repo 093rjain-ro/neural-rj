@@ -55,7 +55,9 @@ export const parseUniversalCapture = async (input: string, mode: IndustryMode): 
       systemInstruction: NEURAL_INSTRUCTION
     }
   });
-  return JSON.parse(response.text || '{}');
+  const rawText = response.text || '{}';
+  const cleanJson = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+  return JSON.parse(cleanJson);
 };
 
 export const developStrategy = async (goal: string, context: string): Promise<AgentPlan> => {
@@ -90,7 +92,9 @@ export const developStrategy = async (goal: string, context: string): Promise<Ag
       systemInstruction: `${NEURAL_INSTRUCTION} Focus on maximizing high-leverage outcomes.`
     }
   });
-  return JSON.parse(response.text || '{}');
+  const rawText = response.text || '{}';
+  const cleanJson = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+  return JSON.parse(cleanJson);
 };
 
 export const planAutonomousStrategy = developStrategy;

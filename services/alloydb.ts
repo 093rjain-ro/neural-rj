@@ -57,7 +57,9 @@ export async function runNaturalLanguageQuery(query: string): Promise<NLQueryRes
     }
   });
 
-  const parsed = JSON.parse(response.text || '{}');
+  const rawText = response.text || '{}';
+  const cleanJson = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+  const parsed = JSON.parse(cleanJson);
   
   return {
     naturalLanguage: query,
